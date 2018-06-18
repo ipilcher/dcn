@@ -1,0 +1,37 @@
+[Unit]
+Description=Set up network in vbmc2 namespace
+Requires=netns@vbmc2.service
+After=netns@vbmc2.service
+JoinsNamespaceOf=netns@vbmc2.service
+Requires=vbmc-interfaces.service
+After=vbmc-interfaces.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+PrivateNetwork=yes
+ExecStart=/usr/sbin/ip link set dev vbmc2-ovs2 up
+ExecStart=/usr/sbin/ip addr add 192.168.117.1/24 dev vbmc2-ovs2
+ExecStart=/usr/sbin/ip addr add 192.168.117.2/24 dev vbmc2-ovs2
+ExecStart=/usr/sbin/ip addr add 192.168.117.3/24 dev vbmc2-ovs2
+ExecStart=/usr/sbin/ip addr add 192.168.117.4/24 dev vbmc2-ovs2
+ExecStart=/usr/sbin/ip addr add 192.168.117.5/24 dev vbmc2-ovs2
+ExecStart=/usr/sbin/ip addr add 192.168.117.6/24 dev vbmc2-ovs2
+ExecStart=/usr/sbin/ip addr add 192.168.117.7/24 dev vbmc2-ovs2
+ExecStart=/usr/sbin/ip addr add 192.168.117.8/24 dev vbmc2-ovs2
+ExecStart=/usr/sbin/ip addr add 192.168.117.9/24 dev vbmc2-ovs2
+ExecStart=/usr/sbin/ip addr add 192.168.117.10/24 dev vbmc2-ovs2
+ExecStart=/usr/sbin/ip addr add 192.168.117.11/24 dev vbmc2-ovs2
+ExecStart=/usr/sbin/ip addr add 192.168.117.12/24 dev vbmc2-ovs2
+ExecStart=/usr/sbin/ip addr add 192.168.117.13/24 dev vbmc2-ovs2
+ExecStart=/usr/sbin/ip addr add 192.168.117.14/24 dev vbmc2-ovs2
+ExecStart=/usr/sbin/ip addr add 192.168.117.15/24 dev vbmc2-ovs2
+ExecStart=/usr/sbin/ip addr add 192.168.117.16/24 dev vbmc2-ovs2
+ExecStart=/usr/sbin/ip addr add 192.168.117.17/24 dev vbmc2-ovs2
+ExecStart=/usr/sbin/ip addr add 192.168.117.18/24 dev vbmc2-ovs2
+ExecStart=/usr/sbin/ip addr add 192.168.117.19/24 dev vbmc2-ovs2
+ExecStart=/usr/sbin/ip addr add 192.168.117.20/24 dev vbmc2-ovs2
+ExecStart=/usr/sbin/ip route add 192.168.17.0/24 via 192.168.117.254
+
+[Install]
+WantedBy=multi-user.target

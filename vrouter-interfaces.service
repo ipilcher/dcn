@@ -1,0 +1,19 @@
+[Unit]
+Description=Move network interfaces into vrouter network namespace
+Requires=netns@vrouter.service
+After=netns@vrouter.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+# Move the router ends of the veth pairs into the vrouter netns
+ExecStart=/usr/sbin/ip link set vrouter-ovs0 netns vrouter
+ExecStart=/usr/sbin/ip link set vrouter-ovs1 netns vrouter
+ExecStart=/usr/sbin/ip link set vrouter-ovs2 netns vrouter
+# Ensure that the OVS ends of the veth pairs are up
+ExecStart=/usr/sbin/ip link set dev ovs0-vrouter up
+ExecStart=/usr/sbin/ip link set dev ovs1-vrouter up
+ExecStart=/usr/sbin/ip link set dev ovs2-vrouter up
+# Add 25ms latency to the OVS end of the "WAN" link
+ExecStart=/usr/sbin/tc qdisc add dev ovs2-vrouter root netem delay 25ms
+

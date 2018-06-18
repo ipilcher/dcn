@@ -1,0 +1,17 @@
+[Unit]
+Description=Move VirtualBMC network interfaces into network namespaces
+Requires=netns@vbmc1.service
+After=netns@vbmc1.service
+Requires=netns@vbmc2.service
+After=netns@vbmc2.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+# Move the vBMC ends of the veth pairs into their network namespaces
+ExecStart=/usr/sbin/ip link set vbmc1-ovs1 netns vbmc1
+ExecStart=/usr/sbin/ip link set vbmc2-ovs2 netns vbmc2
+# Ensure that the OVS ends of the veth pairs are up
+ExecStart=/usr/sbin/ip link set dev ovs1-vbmc1 up
+ExecStart=/usr/sbin/ip link set dev ovs2-vbmc2 up
+

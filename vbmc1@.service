@@ -1,0 +1,20 @@
+[Unit]
+Description=VirtualBMC for %i (in vbmc1 namespace)
+Wants=network-online.target libvirtd.service
+After=network-online.target libvirtd.service
+Requires=netns@vbmc1.service
+After=netns@vbmc1.service
+JoinsNamespaceOf=netns@vbmc1.service
+Requires=vbmc1-network.service
+After=vbmc1-network.service
+
+[Service]
+Type=forking
+PIDFile=/root/.vbmc/%i/pid
+PrivateNetwork=yes
+ExecStart=/usr/bin/vbmc start %i
+ExecStop=/usr/bin/vbmc stop %i
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

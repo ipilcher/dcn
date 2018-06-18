@@ -1,0 +1,60 @@
+[Unit]
+Description=vRouter and DHCP relay
+Wants=network-online.target
+After=network-online.target
+Requires=netns@vrouter.service
+After=netns@vrouter.service
+JoinsNamespaceOf=netns@vrouter.service
+Requires=vrouter-interfaces.service
+After=vrouter-interfaces.service
+Wants=openvswitch.service
+After=openvswitch.service
+
+[Service]
+Type=simple
+PrivateNetwork=yes
+# Make sure the vrouter ends of the veth pairs are up
+ExecStartPre=/usr/sbin/ip link set dev vrouter-ovs0 up
+ExecStartPre=/usr/sbin/ip link set dev vrouter-ovs1 up
+ExecStartPre=/usr/sbin/ip link set dev vrouter-ovs2 up
+# Add 25ms latency to the vrouter end of the "WAN" link
+ExecStartPre=/usr/sbin/tc qdisc add dev vrouter-ovs2 root netem delay 25ms
+# Add VLAN tags
+ExecStartPre=/usr/sbin/ip link add link vrouter-ovs1 name vrouter-ovs1.17 type vlan id 17
+ExecStartPre=/usr/sbin/ip link add link vrouter-ovs1 name vrouter-ovs1.18 type vlan id 18
+ExecStartPre=/usr/sbin/ip link add link vrouter-ovs1 name vrouter-ovs1.19 type vlan id 19
+ExecStartPre=/usr/sbin/ip link add link vrouter-ovs1 name vrouter-ovs1.20 type vlan id 20
+ExecStartPre=/usr/sbin/ip link add link vrouter-ovs2 name vrouter-ovs2.17 type vlan id 17
+ExecStartPre=/usr/sbin/ip link add link vrouter-ovs2 name vrouter-ovs2.18 type vlan id 18
+ExecStartPre=/usr/sbin/ip link add link vrouter-ovs2 name vrouter-ovs2.19 type vlan id 19
+ExecStartPre=/usr/sbin/ip link add link vrouter-ovs2 name vrouter-ovs2.20 type vlan id 20
+# Make sure the VLAN interfaces are up
+ExecStartPre=/usr/sbin/ip link set dev vrouter-ovs1.17 up
+ExecStartPre=/usr/sbin/ip link set dev vrouter-ovs1.18 up
+ExecStartPre=/usr/sbin/ip link set dev vrouter-ovs1.19 up
+ExecStartPre=/usr/sbin/ip link set dev vrouter-ovs1.20 up
+ExecStartPre=/usr/sbin/ip link set dev vrouter-ovs2.17 up
+ExecStartPre=/usr/sbin/ip link set dev vrouter-ovs2.18 up
+ExecStartPre=/usr/sbin/ip link set dev vrouter-ovs2.19 up
+ExecStartPre=/usr/sbin/ip link set dev vrouter-ovs2.20 up
+# Set IP addresses
+ExecStartPre=/usr/sbin/ip addr add 172.31.246.2/24 dev vrouter-ovs0
+ExecStartPre=/usr/sbin/ip addr add 192.168.17.254/24 dev vrouter-ovs1.17
+ExecStartPre=/usr/sbin/ip addr add 192.168.18.254/24 dev vrouter-ovs1.18
+ExecStartPre=/usr/sbin/ip addr add 192.168.19.254/24 dev vrouter-ovs1.19
+ExecStartPre=/usr/sbin/ip addr add 192.168.20.254/24 dev vrouter-ovs1.20
+ExecStartPre=/usr/sbin/ip addr add 192.168.117.254/24 dev vrouter-ovs2.17
+ExecStartPre=/usr/sbin/ip addr add 192.168.118.254/24 dev vrouter-ovs2.18
+ExecStartPre=/usr/sbin/ip addr add 192.168.119.254/24 dev vrouter-ovs2.19
+ExecStartPre=/usr/sbin/ip addr add 192.168.120.254/24 dev vrouter-ovs2.20
+# Set default route
+ExecStartPre=/usr/sbin/ip route add default via 172.31.246.254
+# Enable routing
+ExecStartPre=/usr/bin/bash -c 'echo 1 > /proc/sys/net/ipv4/ip_forward'
+# Enable IP masquerading (NAT)
+ExecStartPre=/usr/sbin/iptables -t nat -A POSTROUTING -s 192.168.0.0/16 ! -d 192.168.0.0/16 -j MASQUERADE
+# Run the DHCP relay
+ExecStart=/usr/sbin/dhcrelay -d -i vrouter-ovs1.19 -i vrouter-ovs2.19 192.168.19.1 192.168.19.101 
+
+[Install]
+WantedBy=multi-user.target
