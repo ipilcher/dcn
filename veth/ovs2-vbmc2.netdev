@@ -1,0 +1,6 @@
+[NetDev]
+Name=ovs2-vbmc2
+Kind=veth
+
+[Peer]
+Name=vbmc2-ovs2

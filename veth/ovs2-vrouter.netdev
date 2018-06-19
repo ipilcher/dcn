@@ -1,0 +1,6 @@
+[NetDev]
+Name=ovs2-vrouter
+Kind=veth
+
+[Peer]
+Name=vrouter-ovs2

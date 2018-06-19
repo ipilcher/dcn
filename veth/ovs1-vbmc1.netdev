@@ -1,0 +1,7 @@
+[NetDev]
+Name=ovs1-vbmc1
+Kind=veth
+MTUBytes=8996
+
+[Peer]
+Name=vbmc1-ovs1

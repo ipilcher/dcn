@@ -1,0 +1,7 @@
+[NetDev]
+Name=ovs0-vrouter
+Kind=veth
+MTUBytes=8996
+
+[Peer]
+Name=vrouter-ovs0
