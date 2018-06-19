@@ -1,0 +1,17 @@
+<!--
+WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  virsh net-edit storage
+or other application using the libvirt API.
+-->
+
+<network>
+  <name>storage</name>
+  <uuid>aac1b649-042c-4c18-9a38-dacb19692895</uuid>
+  <forward mode='bridge'/>
+  <bridge name='ovs0'/>
+  <vlan>
+    <tag id='248'/>
+  </vlan>
+  <virtualport type='openvswitch'/>
+</network>

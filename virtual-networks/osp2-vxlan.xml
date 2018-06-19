@@ -1,0 +1,17 @@
+<!--
+WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  virsh net-edit osp2-vxlan
+or other application using the libvirt API.
+-->
+
+<network>
+  <name>osp2-vxlan</name>
+  <uuid>9de008ae-b3c1-46b3-ac2f-6dc7e19ad803</uuid>
+  <forward mode='bridge'/>
+  <bridge name='ovs2'/>
+  <vlan>
+    <tag id='20'/>
+  </vlan>
+  <virtualport type='openvswitch'/>
+</network>

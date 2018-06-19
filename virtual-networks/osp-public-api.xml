@@ -1,0 +1,17 @@
+<!--
+WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  virsh net-edit osp-public-api
+or other application using the libvirt API.
+-->
+
+<network>
+  <name>osp-public-api</name>
+  <uuid>e469d62c-4e23-4480-9ed1-ec00e67c096b</uuid>
+  <forward mode='bridge'/>
+  <bridge name='ovs0'/>
+  <vlan>
+    <tag id='249'/>
+  </vlan>
+  <virtualport type='openvswitch'/>
+</network>

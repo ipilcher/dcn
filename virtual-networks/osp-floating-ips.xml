@@ -1,0 +1,17 @@
+<!--
+WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  virsh net-edit osp-floating-ips
+or other application using the libvirt API.
+-->
+
+<network>
+  <name>osp-floating-ips</name>
+  <uuid>8e6cf4de-89df-49c9-b6dc-2914139c423b</uuid>
+  <forward mode='bridge'/>
+  <bridge name='ovs0'/>
+  <vlan>
+    <tag id='247'/>
+  </vlan>
+  <virtualport type='openvswitch'/>
+</network>

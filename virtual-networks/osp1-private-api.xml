@@ -1,0 +1,17 @@
+<!--
+WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  virsh net-edit osp1-private-api
+or other application using the libvirt API.
+-->
+
+<network>
+  <name>osp1-private-api</name>
+  <uuid>78a9e7ab-747c-43bc-807d-38e7b00936d0</uuid>
+  <forward mode='bridge'/>
+  <bridge name='ovs1'/>
+  <vlan>
+    <tag id='18'/>
+  </vlan>
+  <virtualport type='openvswitch'/>
+</network>

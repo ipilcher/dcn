@@ -1,0 +1,17 @@
+<!--
+WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  virsh net-edit osp-content
+or other application using the libvirt API.
+-->
+
+<network>
+  <name>osp-content</name>
+  <uuid>dfa9d8f4-915d-4efe-bc1c-0fce77b1db93</uuid>
+  <forward mode='bridge'/>
+  <bridge name='ovs0'/>
+  <vlan>
+    <tag id='246'/>
+  </vlan>
+  <virtualport type='openvswitch'/>
+</network>

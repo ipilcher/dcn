@@ -1,0 +1,17 @@
+<!--
+WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  virsh net-edit osp2-ipmi
+or other application using the libvirt API.
+-->
+
+<network>
+  <name>osp2-ipmi</name>
+  <uuid>b85fd4ec-c462-4c1f-82b3-1075682eccec</uuid>
+  <forward mode='bridge'/>
+  <bridge name='ovs2'/>
+  <vlan>
+    <tag id='17'/>
+  </vlan>
+  <virtualport type='openvswitch'/>
+</network>

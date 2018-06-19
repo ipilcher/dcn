@@ -1,0 +1,17 @@
+<!--
+WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  virsh net-edit osp1-ipmi
+or other application using the libvirt API.
+-->
+
+<network>
+  <name>osp1-ipmi</name>
+  <uuid>889c95de-cca6-4ed8-9ae3-40596a5bf43d</uuid>
+  <forward mode='bridge'/>
+  <bridge name='ovs1'/>
+  <vlan>
+    <tag id='17'/>
+  </vlan>
+  <virtualport type='openvswitch'/>
+</network>

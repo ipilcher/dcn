@@ -1,0 +1,20 @@
+<!--
+WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  virsh net-edit osp2-trunk
+or other application using the libvirt API.
+-->
+
+<network>
+  <name>osp2-trunk</name>
+  <uuid>f8d1399e-21ff-4f91-be27-a29854ee1ffc</uuid>
+  <forward mode='bridge'/>
+  <bridge name='ovs1'/>
+  <vlan trunk='yes'>
+    <tag id='17'/>
+    <tag id='18'/>
+    <tag id='19'/>
+    <tag id='20'/>
+  </vlan>
+  <virtualport type='openvswitch'/>
+</network>

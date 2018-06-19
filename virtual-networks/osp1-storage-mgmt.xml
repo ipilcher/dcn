@@ -1,0 +1,17 @@
+<!--
+WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  virsh net-edit osp1-storage-mgmt
+or other application using the libvirt API.
+-->
+
+<network>
+  <name>osp1-storage-mgmt</name>
+  <uuid>74078537-9851-414f-9868-9cc5c1031ae5</uuid>
+  <forward mode='bridge'/>
+  <bridge name='ovs1'/>
+  <vlan>
+    <tag id='21'/>
+  </vlan>
+  <virtualport type='openvswitch'/>
+</network>

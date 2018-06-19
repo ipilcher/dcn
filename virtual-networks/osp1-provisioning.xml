@@ -1,0 +1,17 @@
+<!--
+WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  virsh net-edit osp1-provisioning
+or other application using the libvirt API.
+-->
+
+<network>
+  <name>osp1-provisioning</name>
+  <uuid>a5b6d562-83f1-45b5-8e21-bc1b786b924c</uuid>
+  <forward mode='bridge'/>
+  <bridge name='ovs1'/>
+  <vlan>
+    <tag id='19'/>
+  </vlan>
+  <virtualport type='openvswitch'/>
+</network>
