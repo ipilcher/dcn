@@ -1,0 +1,94 @@
+{
+    "nodes": [
+        {
+            "name": "overcloud-ctrl01",
+            "pm_type": "ipmi",
+            "mac": [ "52:54:00:b1:57:0c" ],
+            "pm_user": "admin",
+            "pm_password": "redhat",
+            "pm_addr": "192.168.17.1",
+            "capabilities": "profile:control,boot_option:local"
+        },
+        {
+            "name": "overcloud-ctrl02",
+            "pm_type": "ipmi",
+            "mac": [ "52:54:00:d5:ba:a9" ],
+            "pm_user": "admin",
+            "pm_password": "redhat",
+            "pm_addr": "192.168.17.2",
+            "capabilities": "profile:control,boot_option:local"
+        },
+        {
+            "name": "overcloud-ctrl03",
+            "pm_type": "ipmi",
+            "mac": [ "52:54:00:57:95:1f" ],
+            "pm_user": "admin",
+            "pm_password": "redhat",
+            "pm_addr": "192.168.17.3",
+            "capabilities": "profile:control,boot_option:local"
+        },
+        {
+            "name": "overcloud-local01",
+            "pm_type": "ipmi",
+            "mac": [ "52:54:00:3a:79:d4" ],
+            "pm_user": "admin",
+            "pm_password": "redhat",
+            "pm_addr": "192.168.17.4",
+            "capabilities": "profile:compute,boot_option:local"
+        },
+        {
+            "name": "overcloud-local02",
+            "pm_type": "ipmi",
+            "mac": [ "52:54:00:51:68:24" ],
+            "pm_user": "admin",
+            "pm_password": "redhat",
+            "pm_addr": "192.168.17.5",
+            "capabilities": "profile:compute,boot_option:local"
+        },
+        {
+            "name": "overcloud-osd01",
+            "pm_type": "ipmi",
+            "mac": [ "52:54:00:08:54:4d" ],
+            "pm_user": "admin",
+            "pm_password": "redhat",
+            "pm_addr": "192.168.17.6",
+            "capabilities": "profile:ceph-storage,boot_option:local"
+        },
+        {
+            "name": "overcloud-osd02",
+            "pm_type": "ipmi",
+            "mac": [ "52:54:00:6d:1c:74" ],
+            "pm_user": "admin",
+            "pm_password": "redhat",
+            "pm_addr": "192.168.17.7",
+            "capabilities": "profile:ceph-storage,boot_option:local"
+        },
+        {
+            "name": "overcloud-osd03",
+            "pm_type": "ipmi",
+            "mac": [ "52:54:00:d9:d3:40" ],
+            "pm_user": "admin",
+            "pm_password": "redhat",
+            "pm_addr": "192.168.17.8",
+            "capabilities": "profile:ceph-storage,boot_option:local"
+        },
+        {
+            "name": "overcloud-remote01",
+            "pm_type": "ipmi",
+            "mac": [ "52:54:00:72:76:f9" ],
+            "pm_user": "admin",
+            "pm_password": "redhat",
+            "pm_addr": "192.168.117.1",
+            "capabilities": "profile:remote,boot_option:local"
+        },
+        {
+            "name": "overcloud-remote02",
+            "pm_type": "ipmi",
+            "mac": [ "52:54:00:6f:1a:7e" ],
+            "pm_user": "admin",
+            "pm_password": "redhat",
+            "pm_addr": "192.168.117.2",
+            "capabilities": "profile:remote,boot_option:local"
+        }
+    ]
+}

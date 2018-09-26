@@ -1,0 +1,16 @@
+parameter_defaults:
+  ControllerCount: 3
+  ComputeCount: 2
+  RemoteCount: 2
+  CephStorageCount: 3
+  OvercloudControllerFlavor: control
+  OvercloudComputeFlavor: compute
+  OvercloudRemoteFlavor: remote
+  OvercloudCephStorageFlavor: ceph-storage
+  ControlPlaneSubnet: ctlplane1
+  ControllerControlPlaneSubnet: ctlplane1
+  ComputeControlPlaneSubnet: ctlplane1
+  RemoteControlPlaneSubnet: ctlplane2
+  CephStorageControlPlaneSubnet: ctlplane1
+  GlanceBackend: swift
+  NovaReservedHostMemory: 2048
